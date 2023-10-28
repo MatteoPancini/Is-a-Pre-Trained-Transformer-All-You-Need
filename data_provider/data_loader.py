@@ -30,6 +30,7 @@ class Dataset_ETT_hour(Dataset):
         # init
         assert flag in ['train', 'test', 'val']
         type_map = {'train': 0, 'val': 1, 'test': 2}
+        print("Type is set to {}, quindi {}".format(flag, self.set_type))
         self.set_type = type_map[flag]
 
         self.percent = percent
@@ -43,7 +44,7 @@ class Dataset_ETT_hour(Dataset):
         self.data_path = data_path
         self.__read_data__()
 
-        self.enc_in = self.data_x.shape[-1]         # -1 gets the last nomber of the list ie: the last dimension
+        self.enc_in = self.data_x.shape[-1]         # -1 gets the last number of the list ie: the last dimension
         print("self.enc_in = {}".format(self.enc_in))
         print("self.data_x = {}".format(self.data_x.shape))
         self.tot_len = len(self.data_x) - self.seq_len - self.pred_len + 1
@@ -56,8 +57,11 @@ class Dataset_ETT_hour(Dataset):
 
         border1s = [0, 12 * 30 * 24 - self.seq_len, 12 * 30 * 24 + 4 * 30 * 24 - self.seq_len]
         border2s = [12 * 30 * 24, 12 * 30 * 24 + 4 * 30 * 24, 12 * 30 * 24 + 8 * 30 * 24]
-        border1 = border1s[self.set_type]
-        border2 = border2s[self.set_type]
+        border1 = border1s[self.set_type]           # viene selezionato il bordo iniziale in base al type ovvero train/val/test
+        border2 = border2s[self.set_type]           # viene selezionato il bordo finale in base al type ovvero train/val/test
+
+        print("border1={}".format(border1))
+        print("border2={}".format(border2))
 
         if self.set_type == 0:
             border2 = (border2 - self.seq_len) * self.percent // 100 + self.seq_len
@@ -68,7 +72,7 @@ class Dataset_ETT_hour(Dataset):
         elif self.features == 'S':
             df_data = df_raw[[self.target]]
 
-        if self.scale:
+        if self.scale:  # rimuove la media non fa nient'altro
             train_data = df_data[border1s[0]:border2s[0]]
             self.scaler.fit(train_data.values)
             data = self.scaler.transform(df_data.values)
