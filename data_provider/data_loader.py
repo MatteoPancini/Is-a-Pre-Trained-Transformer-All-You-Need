@@ -64,8 +64,10 @@ class Dataset_ETT_hour(Dataset):
         print("border1={}".format(border1))
         print("border2={}".format(border2))
 
-        if self.set_type == 0:
+        if self.set_type == 0:      # sul train usano solo un po' di dati chissà perchè
             border2 = (border2 - self.seq_len) * self.percent // 100 + self.seq_len
+            print("border2 ristretto={}".format(border2))
+
 
         if self.features == 'M' or self.features == 'MS':
             cols_data = df_raw.columns[1:]
