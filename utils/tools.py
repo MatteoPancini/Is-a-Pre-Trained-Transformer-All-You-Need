@@ -292,6 +292,7 @@ def test(model, test_data, test_loader, args, device, itr):
     trues = []
     # mases = []
 
+    
     model.eval()
     with torch.no_grad():
         for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in tqdm(enumerate(test_loader)):

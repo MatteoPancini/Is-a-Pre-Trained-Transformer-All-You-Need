@@ -43,7 +43,7 @@ class Dataset_ETT_hour(Dataset):
         self.data_path = data_path
         self.__read_data__()
 
-        self.enc_in = self.data_x.shape[-1]
+        self.enc_in = self.data_x.shape[-1]         # -1 gets the last nomber of the list ie: the last dimension
         print("self.enc_in = {}".format(self.enc_in))
         print("self.data_x = {}".format(self.data_x.shape))
         self.tot_len = len(self.data_x) - self.seq_len - self.pred_len + 1
@@ -90,6 +90,8 @@ class Dataset_ETT_hour(Dataset):
         self.data_x = data[border1:border2]
         self.data_y = data[border1:border2]
         self.data_stamp = data_stamp
+
+        print("Data load says: ho caricato il dataset. Data_x ha forma {}, mentre data_y ha forma {}".format(self.data_x.shape, self.data_y.shape))
 
     def __getitem__(self, index):
         feat_id = index // self.tot_len

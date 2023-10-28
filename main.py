@@ -130,10 +130,13 @@ for ii in range(args.itr):
         model.to(device)
     else:
         model = GPT4TS(args, device)
+    
     mse, mae = test(model, test_data, test_loader, args, device, ii)
+    mses.append(mse)
+    maes.append(mae)
 
 
 mses = np.array(mses)
 maes = np.array(maes)
-print("mse_mean = {:.4f}, mse_std = {:.4f}".format(np.mean(mses), np.std(mses)))
-print("mae_mean = {:.4f}, mae_std = {:.4f}".format(np.mean(maes), np.std(maes)))
+print("mse_mean = {:.4f}, mse_std = {:.4f}".format(np.mean(np.array(mses)), np.std(np.array(mses))))
+print("mae_mean = {:.4f}, mae_std = {:.4f}".format(np.array(maes), np.array(maes)))

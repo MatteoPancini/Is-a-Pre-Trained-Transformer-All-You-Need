@@ -7,10 +7,10 @@ data_dict = {
     'ett_h': Dataset_ETT_hour,
     'ett_m': Dataset_ETT_minute,
 }
-
+ 
 
 def data_provider(args, flag, drop_last_test=True, train_all=False):
-    Data = data_dict[args.data]
+    Data = data_dict[args.data]                 # prende tra quelli importati in alto il dataset specificato negli argomenti
     timeenc = 0 if args.embed != 'timeF' else 1
     percent = args.percent
     max_len = args.max_len
@@ -50,7 +50,7 @@ def data_provider(args, flag, drop_last_test=True, train_all=False):
         max_len=max_len,
         train_all=train_all
     )
-    print(flag, len(data_set))
+    print("Data Provider says: {}, {}".format(flag, len(data_set)))
     data_loader = DataLoader(
         data_set,
         batch_size=batch_size,
