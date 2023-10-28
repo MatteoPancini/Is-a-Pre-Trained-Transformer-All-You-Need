@@ -50,6 +50,7 @@ def data_provider(args, flag, drop_last_test=True, train_all=False):
         max_len=max_len,
         train_all=train_all
     )
+    print("Data Provider says: {}, {}".format(flag, data_set.data_x.shape))
     print("Data Provider says: {}, {}".format(flag, len(data_set)))
     data_loader = DataLoader(
         data_set,
