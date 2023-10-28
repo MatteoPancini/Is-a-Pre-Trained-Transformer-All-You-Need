@@ -30,8 +30,9 @@ class Dataset_ETT_hour(Dataset):
         # init
         assert flag in ['train', 'test', 'val']
         type_map = {'train': 0, 'val': 1, 'test': 2}
-        print("Type is set to {}, quindi {}".format(flag, self.set_type))
         self.set_type = type_map[flag]
+        print("Type is set to {}, quindi {}".format(flag, self.set_type))
+
 
         self.percent = percent
         self.features = features
