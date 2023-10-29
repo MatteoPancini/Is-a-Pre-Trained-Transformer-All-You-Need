@@ -294,6 +294,15 @@ def test(model, test_data, test_loader, args, device, itr):
 
     
     model.eval()
+
+    # The cycle you provided iterates over the test_loader, which is an iterable for a dataset that contains sequential data. During each iteration of the loop:
+    # batch_x contains input sequences.
+    # batch_y contains corresponding target sequences.
+    # batch_x_mark contains timestamp data for the input sequences.
+    # batch_y_mark contains timestamp data for the target sequences.
+    # Each iteration processes a batch of data, where the number of batches and their sizes are determined by the test_loader.
+    # This loop allows you to evaluate a machine learning model on the test data, typically for tasks like time series forecasting or sequence-to-sequence prediction.
+    # The loop goes through the entire test dataset in batches, making predictions or evaluations as needed.
     with torch.no_grad():
         for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in tqdm(enumerate(test_loader)):
             
@@ -304,7 +313,12 @@ def test(model, test_data, test_loader, args, device, itr):
 
             batch_x = batch_x.float().to(device)
             batch_y = batch_y.float()
-            
+
+            print("shape di batch_x/y: {}, {}".format(batch_x.shape, batch_y.shape))
+            print("batch_x/y: {}, {}".format(batch_x, batch_y))
+
+            input("Press to read next batch")
+
             outputs = model(batch_x[:, -args.seq_len:, :], itr)
             
             # encoder - decoder
