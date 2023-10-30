@@ -315,7 +315,9 @@ def test(model, test_data, test_loader, args, device, itr):
             batch_y = batch_y.float()
 
             print("shape di batch_x/y: {}, {}".format(batch_x.shape, batch_y.shape))
-            print("batch_x/y: {}, {}".format(batch_x, batch_y))
+
+            if (i in [0,1,6,7]):
+                print("batch_x/y: {}, {}".format(batch_x, batch_y))
 
             input("Press to read next batch")
 
@@ -330,6 +332,8 @@ def test(model, test_data, test_loader, args, device, itr):
             
             preds.append(pred)
             trues.append(true)
+
+    print("i è: {}".format(i))
 
     preds = np.array(preds)
     trues = np.array(trues)
