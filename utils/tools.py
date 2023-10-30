@@ -316,7 +316,7 @@ def test(model, test_data, test_loader, args, device, itr):
 
             print("shape di batch_x/y: {}, {}".format(batch_x.shape, batch_y.shape))
 
-            if (i in [0,1,6,7]):
+            if (i in [0,1,6,7, 12]):
                 print("batch_x/y: {}, {}".format(batch_x, batch_y))
 
             # input("Press to read next batch")
