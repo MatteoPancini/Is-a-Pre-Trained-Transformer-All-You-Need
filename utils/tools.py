@@ -319,7 +319,7 @@ def test(model, test_data, test_loader, args, device, itr):
             if (i in [0,1,6,7]):
                 print("batch_x/y: {}, {}".format(batch_x, batch_y))
 
-            input("Press to read next batch")
+            # input("Press to read next batch")
 
             outputs = model(batch_x[:, -args.seq_len:, :], itr)
             
