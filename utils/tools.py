@@ -323,6 +323,10 @@ def test(model, test_data, test_loader, args, device, itr):
             #     print("timestamps: {} --- {}".format(batch_x_mark, batch_y_mark))
 
             indices = np.where(np.all(batch_x_mark[:,0,:] == [-0.5   , -0.3333, -0.2   ,  0.2726], axis=2))
+            if indices[0].size > 0:
+                print("Timestamp found in batch {} at index {}".format(i, indices[0][0]))
+            else:
+                print("Row not found in the batch.")
 
             outputs = model(batch_x[:, -args.seq_len:, :], itr)
             
