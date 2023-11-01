@@ -318,11 +318,11 @@ def test(model, test_data, test_loader, args, device, itr):
             print("shape di batch_x/y_mark: {}, {}".format(batch_x_mark.shape, batch_y_mark.shape))
 
 
-            if (i in [0, 11, 12]):
-                print("batch_x/y: {}, {}".format(batch_x, batch_y))
-                print("timestamps: {} --- {}".format(batch_x_mark, batch_y_mark))
+            # if (i in [0, 11, 12]):
+            #     print("batch_x/y: {}, {}".format(batch_x, batch_y))
+            #     print("timestamps: {} --- {}".format(batch_x_mark, batch_y_mark))
 
-            # input("Press to read next batch")
+            indices = np.where(np.all(batch_x_mark[:,0,:] == [-0.5   , -0.3333, -0.2   ,  0.2726], axis=2))
 
             outputs = model(batch_x[:, -args.seq_len:, :], itr)
             
