@@ -57,7 +57,9 @@ class Dataset_ETT_hour(Dataset):
                                           self.data_path))
 
         border1s = [0, 12 * 30 * 24 - self.seq_len, 12 * 30 * 24 + 4 * 30 * 24 - self.seq_len]
-        border2s = [12 * 30 * 24, 12 * 30 * 24 + 4 * 30 * 24, 12 * 30 * 24 + 8 * 30 * 24]
+        # border2s = [12 * 30 * 24, 12 * 30 * 24 + 4 * 30 * 24, 12 * 30 * 24 + 8 * 30 * 24]
+        border2s = [12 * 30 * 24, 12 * 30 * 24 + 4 * 30 * 24, 12 * 30 * 24 + 4 * 30 * 24]
+
         border1 = border1s[self.set_type]           # viene selezionato il bordo iniziale in base al type ovvero train/val/test
         border2 = border2s[self.set_type]           # viene selezionato il bordo finale in base al type ovvero train/val/test
 

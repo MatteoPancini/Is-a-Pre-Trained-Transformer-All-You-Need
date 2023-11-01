@@ -140,3 +140,5 @@ mses = np.array(mses)
 maes = np.array(maes)
 print("mse_mean = {:.4f}, mse_std = {:.4f}".format(np.mean(np.array(mses)), np.std(np.array(mses))))
 print("mae_mean = {:.4f}, mae_std = {:.4f}".format(np.array(maes), np.array(maes)))
+
+return np.array([1,1,1,1])
