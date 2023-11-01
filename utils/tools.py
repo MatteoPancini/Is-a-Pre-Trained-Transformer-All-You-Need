@@ -316,7 +316,7 @@ def test(model, test_data, test_loader, args, device, itr):
 
             print("shape di batch_x/y: {}, {}".format(batch_x.shape, batch_y.shape))
 
-            if (i in [11, 12]):
+            if (i in [0, 11, 12]):
                 print("batch_x/y: {}, {}".format(batch_x, batch_y))
                 print("timestamps: {} --- {}".format(batch_x_mark, batch_y_mark))
 
