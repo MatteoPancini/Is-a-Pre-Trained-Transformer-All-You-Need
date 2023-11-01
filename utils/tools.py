@@ -322,7 +322,7 @@ def test(model, test_data, test_loader, args, device, itr):
             #     print("batch_x/y: {}, {}".format(batch_x, batch_y))
             #     print("timestamps: {} --- {}".format(batch_x_mark, batch_y_mark))
 
-            print(batch_x_mark[:,0,:])
+            print(batch_x_mark[:,0,:], batch_x_mark[:,0,:].shape)
             indices = np.where(np.all(batch_x_mark[:,0,:] == [-0.5   , -0.3333, -0.2   ,  0.2726], axis=1))
             if indices[0].size > 0:
                 print("Timestamp found in batch {} at index {}".format(i, indices[0][0]))
