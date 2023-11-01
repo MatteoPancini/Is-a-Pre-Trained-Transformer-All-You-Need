@@ -318,6 +318,7 @@ def test(model, test_data, test_loader, args, device, itr):
 
             if (i in [11, 12]):
                 print("batch_x/y: {}, {}".format(batch_x, batch_y))
+                print("timestamps: {} --- {}".format(batch_x_mark, batch_y_mark))
 
             # input("Press to read next batch")
 
