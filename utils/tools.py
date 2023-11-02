@@ -344,6 +344,12 @@ def test(model, test_data, test_loader, args, device, itr):
 
     preds = np.array(preds)
     trues = np.array(trues)
+
+    filename = '../predictions.csv'
+
+    # Use numpy.savetxt() to save the matrix to a CSV file
+    np.savetxt(filename, preds, delimiter=',')
+
     # mases = np.mean(np.array(mases))
     print('test shape:', preds.shape, trues.shape)
     preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
