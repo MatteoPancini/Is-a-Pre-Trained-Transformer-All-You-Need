@@ -345,10 +345,7 @@ def test(model, test_data, test_loader, args, device, itr):
     preds = np.array(preds)
     trues = np.array(trues)
 
-    filename = '../predictions.csv'
-
-    # Use numpy.savetxt() to save the matrix to a CSV file
-    np.savetxt(filename, preds, delimiter=',')
+    
 
     # mases = np.mean(np.array(mases))
     print('test shape:', preds.shape, trues.shape)
@@ -356,6 +353,11 @@ def test(model, test_data, test_loader, args, device, itr):
     trues = trues.reshape(-1, trues.shape[-2], trues.shape[-1])
     print('test shape:', preds.shape, trues.shape)
 
+    filename = '../predictions.csv'
+
+    # Use numpy.savetxt() to save the matrix to a CSV file
+    np.savetxt(filename, preds, delimiter=',')
+    
     mae, mse, rmse, mape, mspe, smape, nd = metric(preds, trues)
     # print('mae:{:.4f}, mse:{:.4f}, rmse:{:.4f}, smape:{:.4f}, mases:{:.4f}'.format(mae, mse, rmse, smape, mases))
     print('mae:{:.4f}, mse:{:.4f}, rmse:{:.4f}, smape:{:.4f}'.format(mae, mse, rmse, smape))
