@@ -349,8 +349,12 @@ def test(model, test_data, test_loader, args, device, itr):
 
     # mases = np.mean(np.array(mases))
     print('test shape:', preds.shape, trues.shape)
-    preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
-    trues = trues.reshape(-1, trues.shape[-2], trues.shape[-1])
+    # preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
+    # trues = trues.reshape(-1, trues.shape[-2], trues.shape[-1])
+
+    preds = preds.reshape(-1, preds.shape[-2])
+    trues = trues.reshape(-1, trues.shape[-2])
+
     print('test shape:', preds.shape, trues.shape)
 
     filename = '../predictions.csv'

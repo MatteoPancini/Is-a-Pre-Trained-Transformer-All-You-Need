@@ -35,7 +35,7 @@ python main.py \
     --stride 8 \
     --percent 5 \
     --gpt_layer 6 \
-    --itr 3 \
+    --itr 1 \
     --model $model \
     --tmax 20 \
     --cos 1 \
