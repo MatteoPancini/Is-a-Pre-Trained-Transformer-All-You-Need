@@ -111,7 +111,7 @@ for ii in range(args.itr):
 
     train_data, train_loader = data_provider(args, 'train')
     vali_data, vali_loader = data_provider(args, 'val')
-    test_data, test_loader = data_provider(args, 'test')
+    test_data, test_loader = data_provider(args, 'preds')
 
     if args.freq != 'h':
         args.freq = SEASONALITY_MAP[test_data.freq]
@@ -132,7 +132,7 @@ for ii in range(args.itr):
         model = GPT4TS(args, device)
     
     # mse, mae = test(model, test_data, test_loader, args, device, ii)
-    generate_preds()
+    generate_preds(model, test_data, test_loader, args, device, ii)
 
 
 
