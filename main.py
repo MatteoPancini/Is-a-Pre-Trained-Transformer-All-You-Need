@@ -109,36 +109,36 @@ for ii in range(args.itr):
     if args.freq == 0:
         args.freq = 'h'
 
-    train_data, train_loader = data_provider(args, 'train')
-    vali_data, vali_loader = data_provider(args, 'val')
-    test_data, test_loader = data_provider(args, 'test')
+#     train_data, train_loader = data_provider(args, 'train')
+#     vali_data, vali_loader = data_provider(args, 'val')
+#     test_data, test_loader = data_provider(args, 'test')
 
-    if args.freq != 'h':
-        args.freq = SEASONALITY_MAP[test_data.freq]
-        print("freq = {}".format(args.freq))
+#     if args.freq != 'h':
+#         args.freq = SEASONALITY_MAP[test_data.freq]
+#         print("freq = {}".format(args.freq))
 
-    device = torch.device('cuda:0')
+#     device = torch.device('cuda:0')
 
-    time_now = time.time()
-    train_steps = len(train_loader)
+#     time_now = time.time()
+#     train_steps = len(train_loader)
 
-    if args.model == 'PatchTST':
-        model = PatchTST(args, device)
-        model.to(device)
-    elif args.model == 'DLinear':
-        model = DLinear(args, device)
-        model.to(device)
-    else:
-        model = GPT4TS(args, device)
+#     if args.model == 'PatchTST':
+#         model = PatchTST(args, device)
+#         model.to(device)
+#     elif args.model == 'DLinear':
+#         model = DLinear(args, device)
+#         model.to(device)
+#     else:
+#         model = GPT4TS(args, device)
     
-    mse, mae = test(model, test_data, test_loader, args, device, ii)
-    mses.append(mse)
-    maes.append(mae)
+#     mse, mae = test(model, test_data, test_loader, args, device, ii)
+#     mses.append(mse)
+#     maes.append(mae)
 
 
-mses = np.array(mses)
-maes = np.array(maes)
-print("mse_mean = {:.4f}, mse_std = {:.4f}".format(np.mean(np.array(mses)), np.std(np.array(mses))))
-print("mae_mean = {:.4f}, mae_std = {:.4f}".format(np.array(maes), np.array(maes)))
+# mses = np.array(mses)
+# maes = np.array(maes)
+# print("mse_mean = {:.4f}, mse_std = {:.4f}".format(np.mean(np.array(mses)), np.std(np.array(mses))))
+# print("mae_mean = {:.4f}, mae_std = {:.4f}".format(np.array(maes), np.array(maes)))
 
 return np.array([1,1,1,1])
