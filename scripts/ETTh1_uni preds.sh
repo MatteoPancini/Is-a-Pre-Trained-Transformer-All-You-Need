@@ -41,6 +41,6 @@ python main_preds.py \
     --cos 1 \
     --is_gpt 1
 
-done
-done
-done
+# done
+# done
+# done
