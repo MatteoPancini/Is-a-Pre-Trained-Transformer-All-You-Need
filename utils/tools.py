@@ -367,3 +367,68 @@ def test(model, test_data, test_loader, args, device, itr):
     print('mae:{:.4f}, mse:{:.4f}, rmse:{:.4f}, smape:{:.4f}'.format(mae, mse, rmse, smape))
 
     return mse, mae
+
+
+
+def generate_preds(model, test_data, test_loader, args, device, itr):
+    preds = []
+    trues = []
+    # mases = []
+
+    
+    model.eval()
+
+    # The cycle you provided iterates over the test_loader, which is an iterable for a dataset that contains sequential data. During each iteration of the loop:
+    # batch_x contains input sequences.
+    # batch_y contains corresponding target sequences.
+    # batch_x_mark contains timestamp data for the input sequences.
+    # batch_y_mark contains timestamp data for the target sequences.
+    # Each iteration processes a batch of data, where the number of batches and their sizes are determined by the test_loader.
+    # This loop allows you to evaluate a machine learning model on the test data, typically for tasks like time series forecasting or sequence-to-sequence prediction.
+    # The loop goes through the entire test dataset in batches, making predictions or evaluations as needed.
+    with torch.no_grad():
+        for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in tqdm(enumerate(test_loader)):
+            
+            # outputs_np = batch_x.cpu().numpy()
+            # np.save("emb_test/ETTh2_192_test_input_itr{}_{}.npy".format(itr, i), outputs_np)
+            # outputs_np = batch_y.cpu().numpy()
+            # np.save("emb_test/ETTh2_192_test_true_itr{}_{}.npy".format(itr, i), outputs_np)
+
+            batch_x = batch_x.float().to(device)
+            batch_y = batch_y.float()
+
+
+
+            outputs = model(batch_x[:, -args.seq_len:, :], itr)
+            
+            # encoder - decoder
+            outputs = outputs[:, -args.pred_len:, :]
+            batch_y = batch_y[:, -args.pred_len:, :].to(device)
+
+            pred = outputs.detach().cpu().numpy()
+            true = batch_y.detach().cpu().numpy()
+            
+            preds.append(pred)
+            trues.append(true)
+
+
+    preds = np.array(preds)
+    trues = np.array(trues)
+
+    
+
+    # mases = np.mean(np.array(mases))
+    print('test shape:', preds.shape, trues.shape)
+    # preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
+    # trues = trues.reshape(-1, trues.shape[-2], trues.shape[-1])
+
+    preds = preds.reshape(-1, preds.shape[-2])
+    trues = trues.reshape(-1, trues.shape[-2])
+
+    print('test shape:', preds.shape, trues.shape)
+
+    filename = '../predictions.csv'
+
+    # Use numpy.savetxt() to save the matrix to a CSV file
+    np.savetxt(filename, preds, delimiter=',')
+

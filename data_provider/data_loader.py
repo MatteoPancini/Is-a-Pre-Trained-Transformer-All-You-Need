@@ -28,8 +28,8 @@ class Dataset_ETT_hour(Dataset):
             self.label_len = size[1]
             self.pred_len = size[2]
         # init
-        assert flag in ['train', 'test', 'val']
-        type_map = {'train': 0, 'val': 1, 'test': 2}
+        assert flag in ['train', 'test', 'val', 'preds']
+        type_map = {'train': 0, 'val': 1, 'test': 2, 'preds': 3}
         self.set_type = type_map[flag]
         print("Type is set to {}, quindi {}".format(flag, self.set_type))
 
@@ -46,8 +46,6 @@ class Dataset_ETT_hour(Dataset):
         self.__read_data__()
 
         self.enc_in = self.data_x.shape[-1]         # -1 gets the last number of the list ie: the last dimension
-        print("self.enc_in = {}".format(self.enc_in))
-        print("self.data_x = {}".format(self.data_x.shape))
         self.tot_len = len(self.data_x) - self.seq_len - self.pred_len + 1
 
 
@@ -56,8 +54,8 @@ class Dataset_ETT_hour(Dataset):
         df_raw = pd.read_csv(os.path.join(self.root_path,
                                           self.data_path))
 
-        border1s = [0, 12 * 30 * 24 - self.seq_len, 12 * 30 * 24 + 4 * 30 * 24 - self.seq_len]
-        border2s = [12 * 30 * 24, 12 * 30 * 24 + 4 * 30 * 24, 12 * 30 * 24 + 8 * 30 * 24]
+        border1s = [0, 12 * 30 * 24 - self.seq_len, 12 * 30 * 24 + 4 * 30 * 24 - self.seq_len, 0]
+        border2s = [12 * 30 * 24, 12 * 30 * 24 + 4 * 30 * 24, 12 * 30 * 24 + 8 * 30 * 24, 12 * 30 * 24 + 8 * 30 * 24]
 
         border1 = border1s[self.set_type]           # viene selezionato il bordo iniziale in base al type ovvero train/val/test
         border2 = border2s[self.set_type]           # viene selezionato il bordo finale in base al type ovvero train/val/test

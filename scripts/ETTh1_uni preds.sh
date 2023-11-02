@@ -11,7 +11,7 @@ model=GPT4TS
 # for lr in 100
 # do
 
-python main.py \
+python main_preds.py \
     --root_path ./datasets_uni/ETT-small/ \
     --data_path ETTh1.csv \
     --model_id ETTh1_$model'_'$gpt_layer'_'$seq_len'_'$96'_'$5 \
