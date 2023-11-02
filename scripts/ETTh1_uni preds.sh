@@ -4,12 +4,12 @@ export CUDA_VISIBLE_DEVICES=0
 seq_len=336
 model=GPT4TS
 
-for percent in 5 10
-do
-for pred_len in 96 192 336 720
-do
-for lr in 100
-do
+# for percent in 5 10
+# do
+# for pred_len in 96 192 336 720
+# do
+# for lr in 100
+# do
 
 python main.py \
     --root_path ./datasets_uni/ETT-small/ \
