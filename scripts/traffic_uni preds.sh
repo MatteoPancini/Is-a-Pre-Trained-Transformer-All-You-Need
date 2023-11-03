@@ -5,7 +5,7 @@ percent=100
 pred_len=96
 
 python main.py \
-    --root_path ./datasets/traffic/ \
+    --root_path ./datasets_uni/traffic/ \
     --data_path traffic.csv \
     --model_id traffic_$model'_'$gpt_layer'_'$seq_len'_'$pred_len'_'$percent \
     --data custom \

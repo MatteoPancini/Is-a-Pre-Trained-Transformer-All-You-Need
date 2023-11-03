@@ -7,7 +7,7 @@ percent=100
 pred_len=96
 
 python main.py \
-    --root_path ./datasets/weather/ \
+    --root_path ./datasets_uni/weather/ \
     --data_path weather.csv \
     --model_id weather_$model'_'$gpt_layer'_'$seq_len'_'$pred_len'_'$percent \
     --data custom \

@@ -10,7 +10,7 @@ for percent in 100
 do
 
 python main.py \
-    --root_path ./datasets/illness/ \
+    --root_path ./datasets_uni/illness/ \
     --data_path national_illness.csv \
     --model_id illness_$model'_'$gpt_layer'_'$seq_len'_'$pred_len'_'$percent \
     --data custom \
