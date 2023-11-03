@@ -3,15 +3,13 @@ export CUDA_VISIBLE_DEVICES=0
 seq_len=336
 model=GPT4TS
 
-# for percent in 100
-# do
-# for pred_len in 96 192 336 720
-# do
+percent=100
+pred_len=96
 
 python main.py \
     --root_path ./datasets/ETT-small/ \
     --data_path ETTh2.csv \
-    --model_id ETTh2_$model'_'$gpt_layer'_'$seq_len'_'$96'_'$100 \
+    --model_id ETTh2_$model'_'$gpt_layer'_'$seq_len'_'$pred_len'_'$percent \
     --data ett_h \
     --seq_len $seq_len \
     --label_len 168 \
@@ -37,6 +35,3 @@ python main.py \
     --tmax 20 \
     --pretrain 1 \
     --is_gpt 1
-
-# done
-# done
