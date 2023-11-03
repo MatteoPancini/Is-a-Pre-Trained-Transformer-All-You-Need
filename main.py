@@ -138,6 +138,6 @@ for ii in range(args.itr):
 
 mses = np.array(mses)
 maes = np.array(maes)
-print("mse_mean = {:.4f}, mse_std = {:.4f}".format(np.mean(np.array(mses)), np.std(np.array(mses))))
-print("mae_mean = {:.4f}, mae_std = {:.4f}".format(np.array(maes), np.array(maes)))
+#print("mse_mean = {:.4f}, mse_std = {:.4f}".format(np.mean(np.array(mses)), np.std(np.array(mses))))
+#print("mae_mean = {:.4f}, mae_std = {:.4f}".format(np.array(maes), np.array(maes)))
 
