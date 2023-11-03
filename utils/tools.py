@@ -314,8 +314,8 @@ def test(model, test_data, test_loader, args, device, itr):
             batch_x = batch_x.float().to(device)
             batch_y = batch_y.float()
 
-            print("shape di batch_x/y: {}, {}".format(batch_x.shape, batch_y.shape))
-            print("shape di batch_x/y_mark: {}, {}".format(batch_x_mark.shape, batch_y_mark.shape))
+            #print("shape di batch_x/y: {}, {}".format(batch_x.shape, batch_y.shape))
+            #print("shape di batch_x/y_mark: {}, {}".format(batch_x_mark.shape, batch_y_mark.shape))
 
 
             # if (i in [0, 11, 12]):
