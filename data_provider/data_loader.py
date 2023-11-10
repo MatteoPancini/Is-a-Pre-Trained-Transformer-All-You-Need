@@ -78,11 +78,11 @@ class Dataset_ETT_hour(Dataset):
         if self.features == 'M' or self.features == 'MS':
             cols_data = df_raw.columns[1:]
             df_data = df_raw[cols_data]
-        elif self.features == 'S':              # potrebbe significare univariate?
+        elif self.features == 'S':              # S è univariate non serve cancellare i dataset
             df_data = df_raw[[self.target]]
 
         if self.scale:  # rimuove la media non fa nient'altro
-            train_data = df_data[border1s[0]:border2s[0]]
+            train_data = df_data[border1s[0]:border2s[0]]           # qui usa il train per scalare
             self.scaler.fit(train_data.values)
             data = self.scaler.transform(df_data.values)
         else:
