@@ -399,6 +399,9 @@ def generate_preds(model, test_data, test_loader, args, device, itr):
 
             print("data batch: {}".format(batch_x.shape))
             print("mark x batch: {}".format(batch_x_mark.shape))
+            print("primo mark di batch_x_mark: {}".format(batch_x_mark[0,0,:]))
+            print("primo mark predetto di batch_x_mark: {}".format(batch_x_mark[0, -args.seq_len, :]))
+
 
 
             outputs = model(batch_x[:, -args.seq_len:, :], itr)     # itr pare non faccia nulla, non lo usa model
