@@ -410,8 +410,8 @@ def generate_preds(model, test_data, test_loader, args, device, itr):
             pred = outputs.detach().cpu().numpy()
             true = batch_y.detach().cpu().numpy()
             
-            print("outputs batch: {}".format(batch_x.shape))
-            print("true batch: {}".format(batch_x_mark.shape))
+            print("outputs batch: {}".format(outputs.shape))
+            print("true batch: {}".format(batch_y.shape))
 
             preds.append(pred)
             trues.append(true)
