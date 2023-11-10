@@ -109,8 +109,8 @@ for ii in range(args.itr):
     if args.freq == 0:
         args.freq = 'h'
 
-    train_data, train_loader = data_provider(args, 'train')
-    vali_data, vali_loader = data_provider(args, 'val')
+    # train_data, train_loader = data_provider(args, 'train')
+    # vali_data, vali_loader = data_provider(args, 'val')
     test_data, test_loader = data_provider(args, 'test')
 
     if args.freq != 'h':
@@ -120,7 +120,7 @@ for ii in range(args.itr):
     device = torch.device('cuda:0')
 
     time_now = time.time()
-    train_steps = len(train_loader)
+    # train_steps = len(train_loader)
 
     if args.model == 'PatchTST':
         model = PatchTST(args, device)
