@@ -59,5 +59,5 @@ def data_provider(args, flag, drop_last_test=True, train_all=False):
         batch_size=batch_size,
         shuffle=shuffle_flag,
         num_workers=args.num_workers,
-        drop_last=drop_last)
+        drop_last=drop_last)            # droppa o non droppa l'ultimo batch se le dimensioni non sono divisibili per batch
     return data_set, data_loader
