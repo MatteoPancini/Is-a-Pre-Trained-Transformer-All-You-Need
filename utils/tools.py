@@ -398,10 +398,10 @@ def generate_preds(model, test_data, test_loader, args, device, itr):
             batch_y = batch_y.float()
 
             print("data batch: {}".format(batch_x.shape))
-            print("mark batch: {}".format(batch_x_mark.shape))
+            print("mark x batch: {}".format(batch_x_mark.shape))
 
 
-            outputs = model(batch_x[:, -args.seq_len:, :], itr)
+            outputs = model(batch_x[:, -args.seq_len:, :], itr)     # itr pare non faccia nulla, non lo usa model
             
             # encoder - decoder
             outputs = outputs[:, -args.pred_len:, :]
@@ -412,6 +412,7 @@ def generate_preds(model, test_data, test_loader, args, device, itr):
             
             print("outputs batch: {}".format(outputs.shape))
             print("true batch: {}".format(batch_y.shape))
+            print("mark y batch: {}".format(batch_y_mark.shape))
 
             preds.append(pred)
             trues.append(true)
