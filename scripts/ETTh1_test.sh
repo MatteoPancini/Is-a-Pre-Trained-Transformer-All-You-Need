@@ -6,6 +6,7 @@ model=GPT4TS
 
 percent=100
 pred_len=96
+lr = 100
 
 python main.py \
     --root_path ./datasets/ETT-small/ \
