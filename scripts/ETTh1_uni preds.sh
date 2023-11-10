@@ -12,7 +12,7 @@ model=GPT4TS
 # do
 
 python main_preds.py \
-    --root_path ./ETT-small/ \
+    --root_path ./datasets/ETT-small/ \
     --data_path ETTh1.csv \
     --model_id ETTh1_$model'_'$gpt_layer'_'$seq_len'_'$96'_'$5 \
     --data ett_h \
