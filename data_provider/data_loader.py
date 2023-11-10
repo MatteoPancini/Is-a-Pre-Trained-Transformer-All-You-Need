@@ -54,8 +54,15 @@ class Dataset_ETT_hour(Dataset):
         df_raw = pd.read_csv(os.path.join(self.root_path,
                                           self.data_path))
 
-        border1s = [0, 12 * 30 * 24 - self.seq_len, 12 * 30 * 24 + 4 * 30 * 24 - self.seq_len, 0]
-        border2s = [12 * 30 * 24, 12 * 30 * 24 + 4 * 30 * 24, 12 * 30 * 24 + 8 * 30 * 24, 12 * 30 * 24 + 8 * 30 * 24]
+        border1s = [0,  # train
+                    12 * 30 * 24 - self.seq_len,    # val
+                    12 * 30 * 24 + 4 * 30 * 24 - self.seq_len,  # test
+                    0]  # preds
+
+        border2s = [12 * 30 * 24,   # train
+                    12 * 30 * 24 + 4 * 30 * 24,     # val
+                    12 * 30 * 24 + 8 * 30 * 24,     # test
+                    12 * 30 * 24 + 8 * 30 * 24]     # preds
 
         border1 = border1s[self.set_type]           # viene selezionato il bordo iniziale in base al type ovvero train/val/test
         border2 = border2s[self.set_type]           # viene selezionato il bordo finale in base al type ovvero train/val/test

@@ -31,11 +31,13 @@ def data_provider(args, flag, drop_last_test=True, train_all=False):
         drop_last = drop_last_test
         batch_size = args.batch_size
         freq = args.freq
-    else:
+    else:       # train
         shuffle_flag = True
         drop_last = True
         batch_size = args.batch_size
         freq = args.freq
+
+    print("Data Provider says: the feature flag is {}".format(args.features))
 
     data_set = Data(
         root_path=args.root_path,

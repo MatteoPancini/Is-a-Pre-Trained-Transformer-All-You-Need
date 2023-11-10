@@ -93,7 +93,7 @@ SEASONALITY_MAP = {
    "quarterly": 4,
    "yearly": 1
 }
-
+ 
 mses = []
 maes = []
 
