@@ -6,7 +6,6 @@ model=GPT4TS
 
 percent=100
 pred_len=96
-lr = 100
 
 python main.py \
     --root_path ./datasets/ETT-small/ \
@@ -18,7 +17,7 @@ python main.py \
     --pred_len $pred_len \
     --batch_size 256 \
     --lradj type4 \
-    --learning_rate $lr \
+    --learning_rate 100 \
     --train_epochs 10 \
     --decay_fac 0.5 \
     --d_model 768 \
