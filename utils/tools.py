@@ -397,6 +397,8 @@ def generate_preds(model, test_data, test_loader, args, device, itr):
             batch_x = batch_x.float().to(device)
             batch_y = batch_y.float()
 
+            print("data batch: {}".format(batch_x.shape))
+            print("mark batch: {}".format(batch_x_mark.shape))
 
 
             outputs = model(batch_x[:, -args.seq_len:, :], itr)
