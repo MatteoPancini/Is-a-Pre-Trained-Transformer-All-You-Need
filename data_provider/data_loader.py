@@ -78,7 +78,7 @@ class Dataset_ETT_hour(Dataset):
         if self.features == 'M' or self.features == 'MS':
             cols_data = df_raw.columns[1:]
             df_data = df_raw[cols_data]
-        elif self.features == 'S':
+        elif self.features == 'S':              # potrebbe significare univariate?
             df_data = df_raw[[self.target]]
 
         if self.scale:  # rimuove la media non fa nient'altro

@@ -35,4 +35,5 @@ python main.py \
     --model $model \
     --tmax 20 \
     --cos 1 \
-    --is_gpt 1
+    --is_gpt 1 \
+    --features S
