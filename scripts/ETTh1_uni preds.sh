@@ -18,7 +18,7 @@ python main_preds.py \
     --data ett_h \
     --seq_len $seq_len \
     --label_len 168 \
-    --pred_len 336 \
+    --pred_len 720 \
     --batch_size 256 \
     --lradj type4 \
     --learning_rate 100 \
