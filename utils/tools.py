@@ -405,6 +405,7 @@ def generate_preds(model, test_data, test_loader, args, device, itr):
 
 
             outputs = model(batch_x[:, -args.seq_len:, :], itr)     # itr pare non faccia nulla, non lo usa model
+                                                                    # come funzionano quegli indici negativi, sembra che prenda sequenze di 336 e i 96/192 ecc siano dentro la sequenza di 336
             
             # encoder - decoder
             outputs = outputs[:, -args.pred_len:, :]

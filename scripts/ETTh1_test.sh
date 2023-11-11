@@ -36,4 +36,4 @@ python main.py \
     --tmax 20 \
     --cos 1 \
     --is_gpt 1 \
-    --features M
+    --features S
