@@ -33,3 +33,5 @@ python main.py \
     --model $model \
     --cos 1 \
     --is_gpt 1
+
+done
