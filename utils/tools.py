@@ -440,7 +440,7 @@ def generate_preds(model, test_data, test_loader, args, device, itr):
     name = args.pred_len
     print(name)
 
-    filename = '../' + name + '.csv'
+    filename = '../' + str(name) + '.csv'
 
     # Use numpy.savetxt() to save the matrix to a CSV file
     np.savetxt(filename, preds, delimiter=',')
