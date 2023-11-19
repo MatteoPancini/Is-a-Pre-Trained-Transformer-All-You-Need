@@ -397,10 +397,10 @@ def generate_preds(model, test_data, test_loader, args, device, itr):
             batch_x = batch_x.float().to(device)
             batch_y = batch_y.float()
 
-            print("data batch: {}".format(batch_x.shape))
-            print("mark x batch: {}".format(batch_x_mark.shape))
-            print("primo mark di batch_x_mark: {}".format(batch_x_mark[0,0,:]))
-            print("primo mark predetto di batch_x_mark: {}".format(batch_x_mark[0, -args.seq_len, :]))
+            #print("data batch: {}".format(batch_x.shape))
+            #print("mark x batch: {}".format(batch_x_mark.shape))
+            #print("primo mark di batch_x_mark: {}".format(batch_x_mark[0,0,:]))
+            #print("primo mark predetto di batch_x_mark: {}".format(batch_x_mark[0, -args.seq_len, :]))
 
 
 
@@ -414,9 +414,9 @@ def generate_preds(model, test_data, test_loader, args, device, itr):
             pred = outputs.detach().cpu().numpy()
             true = batch_y.detach().cpu().numpy()
             
-            print("outputs batch: {}".format(outputs.shape))
-            print("true batch: {}".format(batch_y.shape))
-            print("mark y batch: {}".format(batch_y_mark.shape))
+            #print("outputs batch: {}".format(outputs.shape))
+            #print("true batch: {}".format(batch_y.shape))
+            #print("mark y batch: {}".format(batch_y_mark.shape))
 
             preds.append(pred)
             trues.append(true)

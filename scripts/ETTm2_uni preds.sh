@@ -6,7 +6,7 @@ model=GPT4TS
 percent=100
 pred_len=96
 
-python main.py \
+python main_preds.py \
     --root_path ./datasets_uni/ETT-small/ \
     --data_path ETTm2.csv \
     --model_id ETTm2_$model'_'$gpt_layer'_'$seq_len'_'$pred_len'_'$percent \
