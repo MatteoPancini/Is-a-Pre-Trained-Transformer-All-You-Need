@@ -8,7 +8,7 @@ percent=100
 for pred_len in 96 192 336 720
 do
 
-python main.py \
+python main_preds.py \
     --root_path ./datasets_uni/ETT-small/ \
     --data_path ETTh2.csv \
     --model_id ETTh2_$model'_'$gpt_layer'_'$seq_len'_'$pred_len'_'$percent \

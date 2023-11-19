@@ -437,7 +437,9 @@ def generate_preds(model, test_data, test_loader, args, device, itr):
 
     print('test shape:', preds.shape, trues.shape)
 
-    filename = '../ETTH1_preds_v2.csv'
+    name = args.pred_len
+
+    filename = '../' + name + '.csv'
 
     # Use numpy.savetxt() to save the matrix to a CSV file
     np.savetxt(filename, preds, delimiter=',')
