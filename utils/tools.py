@@ -438,6 +438,7 @@ def generate_preds(model, test_data, test_loader, args, device, itr):
     print('test shape:', preds.shape, trues.shape)
 
     name = args.pred_len
+    print(name)
 
     filename = '../' + name + '.csv'
 
