@@ -4,7 +4,8 @@ seq_len=512
 model=GPT4TS
 
 percent=100
-pred_len=96
+for pred_len in 96 192 336 720
+do
 
 python main_preds.py \
     --root_path ./datasets_uni/ETT-small/ \
@@ -34,3 +35,4 @@ python main_preds.py \
     --cos 1 \
     --is_gpt 1
 
+done
