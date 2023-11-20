@@ -142,8 +142,8 @@ class Dataset_ETT_minute(Dataset):
             self.label_len = size[1]
             self.pred_len = size[2]
         # init
-        assert flag in ['train', 'test', 'val']
-        type_map = {'train': 0, 'val': 1, 'test': 2}
+        assert flag in ['train', 'test', 'val', 'preds']
+        type_map = {'train': 0, 'val': 1, 'test': 2, 'preds': 3}
         self.set_type = type_map[flag]
 
         self.features = features
