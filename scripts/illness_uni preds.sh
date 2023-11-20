@@ -26,7 +26,6 @@ python main_preds.py \
     --freq 0 \
     --patch_size 24 \
     --stride 2 \
-    --all 1 \
     --percent $percent \
     --gpt_layer 6 \
     --itr 3 \
