@@ -4,6 +4,7 @@ seq_len=512
 model=GPT4TS
 
 percent=100
+
 for pred_len in 96 192 336 720
 do
 
@@ -30,7 +31,7 @@ python main_preds.py \
     --stride 16 \
     --percent $percent \
     --gpt_layer 6 \
-    --itr 3 \
+    --itr 1 \
     --model $model \
     --cos 1 \
     --is_gpt 1

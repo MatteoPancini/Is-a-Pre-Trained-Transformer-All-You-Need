@@ -245,8 +245,8 @@ class Dataset_Custom(Dataset):
             self.label_len = size[1]
             self.pred_len = size[2]
         # init
-        assert flag in ['train', 'test', 'val']
-        type_map = {'train': 0, 'val': 1, 'test': 2}
+        assert flag in ['train', 'test', 'val', 'preds']
+        type_map = {'train': 0, 'val': 1, 'test': 2, 'preds': 3}
         self.set_type = type_map[flag]
 
         self.features = features
@@ -279,8 +279,17 @@ class Dataset_Custom(Dataset):
         num_train = int(len(df_raw) * 0.7)
         num_test = int(len(df_raw) * 0.2)
         num_vali = len(df_raw) - num_train - num_test
-        border1s = [0, num_train - self.seq_len, len(df_raw) - num_test - self.seq_len]
-        border2s = [num_train, num_train + num_vali, len(df_raw)]
+
+        border1s = [0, #train
+                    num_train - self.seq_len, #val
+                    len(df_raw) - num_test - self.seq_len, #test
+                    0] # preds
+
+        border2s = [num_train, #train
+                    num_train + num_vali, #val
+                    len(df_raw), #test
+                    len(df_raw)] #preds
+
         border1 = border1s[self.set_type]
         border2 = border2s[self.set_type]
         

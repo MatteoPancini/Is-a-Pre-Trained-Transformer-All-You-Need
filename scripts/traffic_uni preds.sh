@@ -2,7 +2,8 @@ seq_len=512
 model=GPT4TS
 
 percent=100
-pred_len=96
+for pred_len in 96 192 336 720
+do
 
 python main.py \
     --root_path ./datasets_uni/traffic/ \
@@ -25,9 +26,11 @@ python main.py \
     --all 1 \
     --percent $percent \
     --gpt_layer 6 \
-    --itr 3 \
+    --itr 1 \
     --model $model \
     --patience 3 \
     --cos 1 \
     --tmax 10 \
     --is_gpt 1
+
+done

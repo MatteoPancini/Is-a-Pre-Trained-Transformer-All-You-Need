@@ -28,7 +28,7 @@ python main_preds.py \
     --stride 2 \
     --percent $percent \
     --gpt_layer 6 \
-    --itr 3 \
+    --itr 1 \
     --model $model \
     --is_gpt 1
 done

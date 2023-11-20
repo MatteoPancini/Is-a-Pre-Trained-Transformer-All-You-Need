@@ -4,7 +4,8 @@ seq_len=512
 model=GPT4TS
 
 percent=100
-pred_len=96
+for pred_len in 96 192 336 720
+do
 
 python main.py \
     --root_path ./datasets_uni/weather/ \
@@ -30,6 +31,8 @@ python main.py \
     --stride 8 \
     --percent $percent \
     --gpt_layer 6 \
-    --itr 3 \
+    --itr 1 \
     --model $model \
     --is_gpt 1
+
+done
