@@ -3,13 +3,12 @@ export CUDA_VISIBLE_DEVICES=0
 
 seq_len=336
 model=GPT4TS
+percent=5
+lr=100
 
-for percent in 5 10
-do
 for pred_len in 96 192 336 720
 do
-for lr in 100
-do
+
 
 python main.py \
     --root_path ./datasets/ETT-small/ \
@@ -39,8 +38,7 @@ python main.py \
     --model $model \
     --tmax 20 \
     --cos 1 \
-    --is_gpt 1
+    --is_gpt 1 \
+    --features S
 
-done
-done
 done

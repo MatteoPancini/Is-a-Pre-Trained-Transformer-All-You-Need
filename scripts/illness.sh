@@ -2,12 +2,11 @@ export CUDA_VISIBLE_DEVICES=0
 
 seq_len=104
 model=GPT4TS
-
+percent=100
 
 for pred_len in 24 36 48 60
 do
-for percent in 100
-do
+
 
 python main.py \
     --root_path ./datasets/illness/ \
@@ -32,7 +31,8 @@ python main.py \
     --gpt_layer 6 \
     --itr 3 \
     --model $model \
-    --is_gpt 1
-done
+    --is_gpt 1 \
+    --features S
+
 done
 

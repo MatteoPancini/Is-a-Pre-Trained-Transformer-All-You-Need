@@ -2,9 +2,8 @@ export CUDA_VISIBLE_DEVICES=0
 
 seq_len=336
 model=GPT4TS
+percent=100
 
-for percent in 100
-do
 for pred_len in 96 192 336 720
 do
 
@@ -31,12 +30,12 @@ python main.py \
     --stride 8 \
     --percent $percent \
     --gpt_layer 6 \
-    --itr 1 \
+    --itr 3 \
     --model $model \
     --cos 1 \
     --tmax 20 \
     --pretrain 1 \
-    --is_gpt 1
+    --is_gpt 1 \
+    --features S
 
-done
 done
