@@ -6,7 +6,7 @@ for pred_len in 96 192 336 720
 do
 
 python main_preds.py \
-    --root_path ./datasets_uni/traffic/ \
+    --root_path ../kaggle/research-methodology/ \
     --data_path traffic.csv \
     --model_id traffic_$model'_'$gpt_layer'_'$seq_len'_'$pred_len'_'$percent \
     --data custom \
@@ -31,6 +31,8 @@ python main_preds.py \
     --patience 3 \
     --cos 1 \
     --tmax 10 \
-    --is_gpt 1
+    --is_gpt 1 \
+    --features S
+
 
 done

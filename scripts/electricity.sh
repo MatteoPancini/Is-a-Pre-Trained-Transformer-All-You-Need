@@ -2,14 +2,13 @@ export CUDA_VISIBLE_DEVICES=0
 
 seq_len=512
 model=GPT4TS
+percent=100
 
 for pred_len in 96 192 336 720
 do
-for percent in 100
-do
 
-python main.py \
-    --root_path ./datasets/electricity/ \
+python main_preds.py \
+    --root_path ../kaggle/research-methodology/ \
     --data_path electricity.csv \
     --model_id ECL_$model'_'$gpt_layer'_'$seq_len'_'$pred_len'_'$percent \
     --data custom \
@@ -31,10 +30,11 @@ python main.py \
     --stride 8 \
     --percent $percent \
     --gpt_layer 6 \
-    --itr 3 \
+    --itr 1 \
     --model $model \
     --cos 1 \
     --tmax 10 \
-    --is_gpt 1
-done
+    --is_gpt 1 \
+    --features S
+
 done
