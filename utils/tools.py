@@ -7,6 +7,7 @@ from tqdm import tqdm
 from datetime import datetime
 from distutils.util import strtobool
 import pandas as pd
+import gc
 
 from utils.metrics import metric
 
@@ -393,6 +394,8 @@ def generate_preds(model, test_data, test_loader, args, device, itr):
             # np.save("emb_test/ETTh2_192_test_input_itr{}_{}.npy".format(itr, i), outputs_np)
             # outputs_np = batch_y.cpu().numpy()
             # np.save("emb_test/ETTh2_192_test_true_itr{}_{}.npy".format(itr, i), outputs_np)
+            gc.collect()
+            torch.cuda.empty_cache()
 
             batch_x = batch_x.float().to(device)
             batch_y = batch_y.float()
