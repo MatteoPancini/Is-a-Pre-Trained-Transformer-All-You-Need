@@ -30,7 +30,7 @@ python main.py \
     --stride 16 \
     --percent $percent \
     --gpt_layer 6 \
-    --itr 3 \
+    --itr 1 \
     --model $model \
     --cos 1 \
     --is_gpt 1 \
